@@ -25,7 +25,13 @@ radius = 246.077
 script = ExtResource("1_ix86l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -0.999999)
+scale = Vector2(0.488281, 0.569336)
 sprite_frames = SubResource("SpriteFrames_wtvp3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -12)
 shape = SubResource("CircleShape2D_3yrlj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
