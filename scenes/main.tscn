@@ -1,11 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://8nec8hriwpbg"]
+[gd_scene load_steps=5 format=3 uid="uid://8nec8hriwpbg"]
 
-[ext_resource type="PackedScene" uid="uid://c7hlmym1gg42j" path="res://scenes/player.tscn" id="1_dymlb"]
-[ext_resource type="PackedScene" uid="uid://ceyb7pcwwqxrm" path="res://scenes/enemy.tscn" id="2_l0qsa"]
+[ext_resource type="Script" path="res://scenes/Main.cs" id="1_d4eui"]
+[ext_resource type="PackedScene" uid="uid://cbv4bqimc0coi" path="res://scenes/enemy.tscn" id="2_ejt6f"]
+[ext_resource type="PackedScene" uid="uid://c7hlmym1gg42j" path="res://scenes/player.tscn" id="3_3xhpu"]
+
+[sub_resource type="Curve2D" id="Curve2D_sqnvd"]
+_data = {
+"points": PackedVector2Array(232.621, -167.498, -232.621, 167.498, 1569, 866, 0, 0, 0, 0, -820, 878, 0, 0, 0, 0, -835, -477, 0, 0, 0, 0, 1569, -472, -16.7871, -165.351, 16.7871, 165.351, 1787.91, 192.83, 28.7778, -158.909, -28.7778, 158.909, 1787.91, 589.956, 0, 0, 0, 0, 1569, 868)
+}
+point_count = 7
 
 [node name="Main" type="Node"]
+script = ExtResource("1_d4eui")
+MobScene = ExtResource("2_ejt6f")
 
-[node name="Player" parent="." instance=ExtResource("1_dymlb")]
+[node name="Player" parent="." instance=ExtResource("3_3xhpu")]
 position = Vector2(349, 198)
 
-[node name="enemy" parent="." instance=ExtResource("2_l0qsa")]
+[node name="enemySpawner" type="Path2D" parent="Player"]
+position = Vector2(-406.63, -221.273)
+scale = Vector2(1.05074, 1.17343)
+curve = SubResource("Curve2D_sqnvd")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Player/enemySpawner"]
+position = Vector2(1569, 866)
+rotation = 2.51754
+
+[node name="EnemyTimer" type="Timer" parent="."]
+wait_time = 0.672
+
+[connection signal="timeout" from="EnemyTimer" to="." method="OnEnemyTimerTimeout"]
