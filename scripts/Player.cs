@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player : Area2D
+public partial class Player : RigidBody2D
 {
 	
 	[Export] 
@@ -19,7 +19,7 @@ public partial class Player : Area2D
 	public override void _Process(double delta)
 	{
 		var velocity = Vector2.Zero; // The player's movement vector.
-
+	
 		if (Input.IsActionPressed("move_right"))
 		{
 			velocity.X += 1;

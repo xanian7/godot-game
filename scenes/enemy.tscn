@@ -1,10 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbv4bqimc0coi"]
+[gd_scene load_steps=6 format=3 uid="uid://cbv4bqimc0coi"]
 
 [ext_resource type="Texture2D" uid="uid://b3syqie8l6o5m" path="res://art/littleguy.png" id="1_3kbyl"]
 [ext_resource type="Texture2D" uid="uid://drkmnsqlhxb1" path="res://art/littleguywalk.png" id="2_f1hp4"]
 [ext_resource type="Script" path="res://scenes/enemy.cs" id="3_gsd1e"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_578v3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_26sbi"]
 animations = [{
@@ -23,13 +21,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_kbrj2"]
 
 [node name="enemy" type="RigidBody2D"]
-physics_material_override = SubResource("PhysicsMaterial_578v3")
 gravity_scale = 0.0
 script = ExtResource("3_gsd1e")
 
 [node name="animatedSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(3.99998, 4)
+scale = Vector2(0.212891, 0.222656)
 sprite_frames = SubResource("SpriteFrames_26sbi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(10, 10)
+position = Vector2(2, 8)
+scale = Vector2(3, 3)
 shape = SubResource("CircleShape2D_kbrj2")
