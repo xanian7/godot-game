@@ -49,19 +49,17 @@ public partial class Player : RigidBody2D
 		if (Input.IsActionPressed("move_down")) return PlayerAction.move_down;
 		if (Input.IsActionPressed("move_up")) return PlayerAction.move_up;
 
-		//if no input is pressed
+		//if no input is pressed/unhandled input
 		return PlayerAction.idle;	
 	}
 
     public static Vector2 HandleMovement(PlayerAction action)
 	{
 		var velocity = Vector2.Zero;
+
+		//use switch to allow one action at a time
         _ = action switch
         {
-			PlayerAction.move_right_up => velocity.X += 1,
-			PlayerAction.move_right_down => velocity.X += 1,
-			PlayerAction.move_left_down => velocity.X -= 1,
-			PlayerAction.move_left_up => velocity.X -= 1,
             PlayerAction.move_right => velocity.X += 1,
             PlayerAction.move_left => velocity.X -= 1,
             PlayerAction.move_down => velocity.Y += 1,
@@ -77,6 +75,16 @@ public partial class Player : RigidBody2D
 			PlayerAction.move_left_up => velocity.Y -= 1,
 			PlayerAction.move_right_down => velocity.Y += 1,
 			PlayerAction.move_left_down => velocity.Y += 1,
+            _ => 0
+        };
+
+		//handing movement along X axis for diagonal action
+		_ = action switch
+        {
+            PlayerAction.move_right_up => velocity.X += 1,
+			PlayerAction.move_right_down => velocity.X += 1,
+			PlayerAction.move_left_down => velocity.X -= 1,
+			PlayerAction.move_left_up => velocity.X -= 1,
             _ => 0
         };
 
