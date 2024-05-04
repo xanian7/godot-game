@@ -23,7 +23,7 @@ public partial class enemy : RigidBody2D
 
 	public override void _IntegrateForces(PhysicsDirectBodyState2D state)
 	{
-		if(player == null) return;
+		if(player is null) return;
 
 		//find player and move in direction
 		var direction = (player.Position - Position).Normalized();
