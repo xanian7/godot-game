@@ -18,10 +18,8 @@ public partial class Player : RigidBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		var velocity = Vector2.Zero;
-		
 		var action = GetPlayerAction();
-		velocity = HandleMovement(action);
+		var velocity = HandleMovement(action);
 
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
@@ -53,42 +51,42 @@ public partial class Player : RigidBody2D
 		return PlayerAction.idle;	
 	}
 
-    public static Vector2 HandleMovement(PlayerAction action)
+	public static Vector2 HandleMovement(PlayerAction action)
 	{
 		var velocity = Vector2.Zero;
 
 		//use switch to allow one action at a time
-        _ = action switch
-        {
-            PlayerAction.move_right => velocity.X += 1,
-            PlayerAction.move_left => velocity.X -= 1,
-            PlayerAction.move_down => velocity.Y += 1,
-            PlayerAction.move_up => velocity.Y -= 1,
+		_ = action switch
+		{
+			PlayerAction.move_right => velocity.X += 1,
+			PlayerAction.move_left => velocity.X -= 1,
+			PlayerAction.move_down => velocity.Y += 1,
+			PlayerAction.move_up => velocity.Y -= 1,
 			PlayerAction.idle => 0,
-            _ => 0
-        };
+			_ => 0
+		};
 
 		//handing movement along Y axis for diagonal action
 		_ = action switch
-        {
-            PlayerAction.move_right_up => velocity.Y -= 1,
+		{
+			PlayerAction.move_right_up => velocity.Y -= 1,
 			PlayerAction.move_left_up => velocity.Y -= 1,
 			PlayerAction.move_right_down => velocity.Y += 1,
 			PlayerAction.move_left_down => velocity.Y += 1,
-            _ => 0
-        };
+			_ => 0
+		};
 
 		//handing movement along X axis for diagonal action
 		_ = action switch
-        {
-            PlayerAction.move_right_up => velocity.X += 1,
+		{
+			PlayerAction.move_right_up => velocity.X += 1,
 			PlayerAction.move_right_down => velocity.X += 1,
 			PlayerAction.move_left_down => velocity.X -= 1,
 			PlayerAction.move_left_up => velocity.X -= 1,
-            _ => 0
-        };
+			_ => 0
+		};
 
-        return velocity;
+		return velocity;
 	}
 
 	public enum PlayerAction 
