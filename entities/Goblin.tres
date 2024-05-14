@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://sii8s0yy3twk"]
+
+[ext_resource type="Script" path="res://entities/EnemyStats.cs" id="1_d5166"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "goblin"
+script = ExtResource("1_d5166")
+Speed = 122
+Health = 12

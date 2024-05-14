@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbv4bqimc0coi"]
+[gd_scene load_steps=7 format=3 uid="uid://cbv4bqimc0coi"]
 
 [ext_resource type="Texture2D" uid="uid://b3syqie8l6o5m" path="res://art/littleguy.png" id="1_3kbyl"]
+[ext_resource type="Resource" uid="uid://ouayttaix0jx" path="res://entities/Zombie.tres" id="2_03jkj"]
 [ext_resource type="Texture2D" uid="uid://drkmnsqlhxb1" path="res://art/littleguywalk.png" id="2_f1hp4"]
 [ext_resource type="Script" path="res://scenes/enemy.cs" id="3_gsd1e"]
 
@@ -23,6 +24,8 @@ animations = [{
 [node name="enemy" type="RigidBody2D"]
 gravity_scale = 0.0
 script = ExtResource("3_gsd1e")
+Stats = ExtResource("2_03jkj")
+Speed = 80
 
 [node name="animatedSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(3.99998, 4)
